@@ -8,8 +8,115 @@ function App() {
 		<div className='App'>
 			<Layout>
 				<main>
-					<h1>Hello World</h1>
-					<SmallCard />
+					<section
+						id='listProduct'
+						className='row justify-content-center my-2'>
+						<SmallCard
+							img='https://via.placeholder.com/300.png/09f/fff'
+							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
+							price='16.500.000 '
+							stock='3'
+							label='Add to Cart'
+						/>
+						<SmallCard
+							img='https://via.placeholder.com/300.png/09f/fff'
+							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
+							price='17.500.000 '
+							stock='5'
+							label='Add to Cart'
+						/>
+						<SmallCard
+							img='https://via.placeholder.com/300.png/09f/fff'
+							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
+							price='15.500.000 '
+							stock='1'
+							label='Add to Cart'
+						/>
+						<SmallCard
+							img='https://via.placeholder.com/300.png/09f/fff'
+							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
+							price='17.500.000 '
+							stock='6'
+							label='Add to Cart'
+						/>
+						<SmallCard
+							img='https://via.placeholder.com/300.png/09f/fff'
+							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
+							price='16.700.000 '
+							stock='2'
+							label='Add to Cart'
+						/>
+						<SmallCard
+							img='https://via.placeholder.com/300.png/09f/fff'
+							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
+							price='16.500.000 '
+							stock='3'
+							label='Add to Cart'
+						/>
+						<SmallCard
+							img='https://via.placeholder.com/300.png/09f/fff'
+							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
+							price='17.500.000 '
+							stock='5'
+							label='Add to Cart'
+						/>
+						<SmallCard
+							img='https://via.placeholder.com/300.png/09f/fff'
+							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
+							price='15.500.000 '
+							stock='1'
+							label='Add to Cart'
+						/>
+						<SmallCard
+							img='https://via.placeholder.com/300.png/09f/fff'
+							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
+							price='17.500.000 '
+							stock='6'
+							label='Add to Cart'
+						/>
+						<SmallCard
+							img='https://via.placeholder.com/300.png/09f/fff'
+							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
+							price='16.700.000 '
+							stock='2'
+							label='Add to Cart'
+						/>
+						<SmallCard
+							img='https://via.placeholder.com/300.png/09f/fff'
+							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
+							price='16.500.000 '
+							stock='3'
+							label='Add to Cart'
+						/>
+						<SmallCard
+							img='https://via.placeholder.com/300.png/09f/fff'
+							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
+							price='17.500.000 '
+							stock='5'
+							label='Add to Cart'
+						/>
+						<SmallCard
+							img='https://via.placeholder.com/300.png/09f/fff'
+							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
+							price='15.500.000 '
+							stock='1'
+							label='Add to Cart'
+						/>
+						<SmallCard
+							img='https://via.placeholder.com/300.png/09f/fff'
+							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
+							price='17.500.000 '
+							stock='6'
+							label='Add to Cart'
+						/>
+						<SmallCard
+							img='https://via.placeholder.com/300.png/09f/fff'
+							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
+							price='16.700.000 '
+							stock='2'
+							label='Add to Cart'
+						/>
+					</section>
 				</main>
 			</Layout>
 		</div>
