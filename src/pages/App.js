@@ -2,8 +2,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { SmallCard } from '../components/Card';
 import Layout from '../components/Layout';
 import '../styles/App.css';
+import { withRouter } from '../utils/navigation';
 
 function App() {
+	document.title = 'E-Commerce App';
 	return (
 		<div className='App'>
 			<Layout>
@@ -123,4 +125,4 @@ function App() {
 	);
 }
 
-export default App;
+export default withRouter(App);
