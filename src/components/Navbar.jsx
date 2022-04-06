@@ -17,7 +17,7 @@ export default function Navbar() {
 						className='mr-sm-2 mx-2'
 					/>
 					<a href='/'>
-						<i class='fa-solid fa-basket-shopping p-3 me-2'></i>
+						<i className='fa-solid fa-basket-shopping p-3 me-2'></i>
 					</a>
 					<div className='d-flex'>
 						<ButtonGroup className='btn-group'>
