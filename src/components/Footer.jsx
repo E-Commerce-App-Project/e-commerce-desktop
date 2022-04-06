@@ -10,9 +10,9 @@ export default function Footer() {
 				<div className='p-4 text-center position-absolute bottom-0 start-50 translate-middle-x'>
 					<h5 className='text-primary '>About Us</h5>
 					<div className=''>
-						<i class='px-2 fa-brands fa-linkedin text-primary h2'></i>
-						<i class='px-2 fa-brands fa-github h2'></i>
-						<i class='px-2 fa-solid fa-envelope h2'></i>
+						<i className='px-2 fa-brands fa-linkedin text-primary h2'></i>
+						<i className='px-2 fa-brands fa-github h2'></i>
+						<i className='px-2 fa-solid fa-envelope h2'></i>
 					</div>
 				</div>
 				<h6 className='text-primary'>© Group Project FE & BE. 2022</h6>
