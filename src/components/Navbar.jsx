@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, ButtonGroup, FormControl } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
 	return (
@@ -16,9 +17,9 @@ export default function Navbar() {
 						placeholder='Search'
 						className='mr-sm-2 mx-2'
 					/>
-					<a href='/'>
+					<Link to='/cart'>
 						<i className='fa-solid fa-basket-shopping p-3 me-2'></i>
-					</a>
+					</Link>
 					<div className='d-flex'>
 						<ButtonGroup className='btn-group'>
 							<Button variant='outline-primary' className='px-4'>
