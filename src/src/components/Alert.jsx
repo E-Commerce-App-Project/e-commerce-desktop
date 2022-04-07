@@ -5,17 +5,13 @@ import { Button } from 'bootstrap';
 function Example() {
         return (
             <Modal.Dialog>
-                <Modal.Header closeButton>
-                    <Modal.Title>Modal title</Modal.Title>
-                </Modal.Header>
-
                 <Modal.Body>
-                    <p>Modal body text goes here.</p>
+                    <p>Cancel Order?</p>
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button variant="secondary">Close</Button>
-                    <Button variant="primary">Save changes</Button>
+                    <Button variant="secondary">Yes</Button>
+                    <Button variant="primary">No</Button>
                 </Modal.Footer>
             </Modal.Dialog>
     );
