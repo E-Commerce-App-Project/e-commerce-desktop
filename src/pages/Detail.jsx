@@ -9,14 +9,14 @@ export default function Detail() {
 		<Layout>
 			<main>
 				<div
-					className='container bg-light my-3 py-lg-3 px-lg-5'
+					className='container bg-light my-5 py-lg-3 px-lg-5'
 					style={{ borderRadius: 1 + 'em' }}>
 					<div className='row container p-3'>
 						<div className='col-4'>
 							<BigCard
 								img='https://via.placeholder.com/300.png/09f/fff'
-								product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
-								price='16.500.000 '
+								product='Apple MacBook Pro 2021 14 16 Inch M1 Max 16GB 32 512GB 1TB '
+								price='28.540.000'
 								stock='3'
 								label='Add to Cart'
 							/>
