@@ -135,7 +135,7 @@ const WideCard = ({ img, product, price, label }) => {
 	);
 };
 
-const ReceiptCard = ({ img, product, price, label, qty }) => {
+const ReceiptCard = ({ img, product, price, qty }) => {
 	return (
 		<>
 			<div className='col-lg-2 mx-md-0 mx-lg-2 my-2'>
@@ -148,37 +148,35 @@ const ReceiptCard = ({ img, product, price, label, qty }) => {
 					/>
 				</Link>
 			</div>
-			<div className='col-lg-7 bg-light me-5'>
-				<div className='text-start mx-2 my-2'>
+			<div className='col-lg-7 bg-light me-5 my-auto'>
+				<div className='text-start mx-2'>
 					<h5 className=' text-uppercase w-100'>{product}</h5>
 				</div>
 			</div>
-			<div className='col-2 position-relative my-3 text-end'>
-				<span className='d-flex justify-content-between'>
+			<div className='col-2 position-relative my-auto text-end'>
+				<span className='d-flex justify-content-between my-2'>
 					<h5 className=''>Rp. </h5>
 					<h5>{price.toLocaleString()}</h5>
 				</span>
-				<span className='d-flex justify-content-between'>
-					<h6 className=''>Qty: </h6>
-					<h6 className=''>{qty} </h6>
+				<span className='d-flex justify-content-between my-2'>
+					<h5 className=''>Qty: </h5>
+					<h5 className=''>{qty} </h5>
 				</span>
-				<span className='d-flex justify-content-between text-warning'>
+				<span className='d-flex justify-content-between text-warning my-2'>
 					<h6 className='justify-content-between'>Subtotal:</h6>
 					<h6 className=''>{(price * qty).toLocaleString()}</h6>
 				</span>
-
-				<Button
-					variant='warning'
-					className='text-uppercase fw-bold px-5'
-					style={{ borderRadius: '0.5rem' }}>
-					{label}
-				</Button>
 			</div>
 		</>
 	);
 };
 
 const BigCard = ({ img, product, price, stock, label }) => {
+	const reqLogin = () => {
+		if (localStorage.getItem('token') === null) {
+			alert('Please Login First');
+		}
+	};
 	return (
 		<>
 			<div className='col-auto my-2'>
@@ -194,6 +192,7 @@ const BigCard = ({ img, product, price, stock, label }) => {
 					<Button
 						variant='warning'
 						className=' text-uppercase fw-bold'
+						onClick={reqLogin}
 						style={{ borderRadius: '0.5rem' }}>
 						{label}
 					</Button>
