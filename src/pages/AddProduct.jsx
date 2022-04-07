@@ -1,15 +1,16 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
-import Foo from '../components/Buttons';
 import { Container } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Layout from '../components/Layout';
 
 export default function AddProduct() {
     return (
+        <Layout>
         <div className='container'>
-            <Container>
+            <Container className='m-5'>
                 <Row>
                     <Col xs={12} md={8}>
                         <Form>
@@ -36,21 +37,26 @@ export default function AddProduct() {
                                 className=' text-uppercase fw-bold'
                                 style={{ borderRadius: '0.5rem' }}>
                                 Cancel
+                            </Button>
+                            <Button
+                                variant='primary'
+                                className=' text-uppercase fw-bold'
+                                style={{ borderRadius: '0.5rem' }}>
+                                Upload
                             </Button>      
-                            <Foo />                      
+                                                 
                         </Form>
                     </Col>
                     <Col xs={6} md={4}>
                         <Form>
                             <label for="file-input"> 
-                                <i class="fa-solid fa-image"></i>
+                                <input id="file-input" type="file"/>
                             </label>
-                            <input id="file-input" type="file" />
                         </Form>
                     </Col>
                 </Row>
             </Container>
-
         </div>
+        </Layout>
     );
 }
