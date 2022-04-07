@@ -1,32 +1,33 @@
 import React from 'react';
+import { Button, ButtonGroup, FormControl } from 'react-bootstrap';
 
 export default function Navbar() {
 	return (
 		<nav className='navbar navbar-expand-lg navbar-light bg-light border-bottom border-2'>
-			<div className='container-fluid justify-content-between'>
-				<a className='navbar-brand' href='#'>
-					LOGO
-				</a>
-
+			<div className='container justify-content-between py-2'>
 				<div
-					className='collapse navbar-collapse'
+					className='collapse navbar-collapse justify-content-between'
 					id='navbarSupportedContent'>
-					<form className='d-flex'>
-						<input
-							className='form-control me-2'
-							type='search'
-							placeholder='Search'
-							aria-label='Search'
-						/>
-						<button
-							className='btn btn-outline-success'
-							type='submit'>
-							Search
-						</button>
-					</form>
+					<a className='navbar-brand text-primary fw-bold' href='/'>
+						LOGO
+					</a>
+					<FormControl
+						type='text'
+						placeholder='Search'
+						className='mr-sm-2 mx-2'
+					/>
+					<a href='/'>
+						<i className='fa-solid fa-basket-shopping p-3 me-2'></i>
+					</a>
 					<div className='d-flex'>
-						<button>Login</button>
-						<button>Register</button>
+						<ButtonGroup className='btn-group'>
+							<Button variant='outline-primary' className='px-4'>
+								Login
+							</Button>
+							<Button variant='primary' className='px-4'>
+								Register
+							</Button>
+						</ButtonGroup>
 					</div>
 				</div>
 			</div>
