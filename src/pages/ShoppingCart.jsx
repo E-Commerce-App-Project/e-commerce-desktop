@@ -44,8 +44,8 @@ function ShoppingCart() {
 						<div className='row'>
 							<WideCard
 								img='https://via.placeholder.com/300.png/09f/fff'
-								product='ASUS ROG ZEPHYRUS G14 GA401QH RYZEN 7 5800HS 8GB 512GB GTX1650 W10 OHS'
-								price={16500000}
+								product='Apple MacBook Pro 2021 14 16 Inch M1 Max 16GB 32 512GB'
+								price={28540000}
 								label='Remove'
 							/>
 							<WideCard
