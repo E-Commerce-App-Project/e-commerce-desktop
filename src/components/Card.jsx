@@ -150,7 +150,7 @@ const ReceiptCard = ({ img, product, price, qty }) => {
 			</div>
 			<div className='col-lg-7 bg-light me-5 my-auto'>
 				<div className='text-start mx-2'>
-					<h5 className=' text-uppercase w-100'>{product}</h5>
+					<h4 className=' text-uppercase w-100'>{product}</h4>
 				</div>
 			</div>
 			<div className='col-2 position-relative my-auto text-end'>
