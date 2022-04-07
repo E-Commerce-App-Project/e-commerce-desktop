@@ -15,107 +15,72 @@ function App() {
 						className='row justify-content-center my-2'>
 						<SmallCard
 							img='https://via.placeholder.com/300.png/09f/fff'
-							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
-							price='16.500.000 '
+							product='Apple MacBook Pro 2021 14 16 Inch M1 Max 16GB 32 512GB'
+							price='28.540.000'
 							stock='3'
 							label='Add to Cart'
 						/>
 						<SmallCard
 							img='https://via.placeholder.com/300.png/09f/fff'
-							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
-							price='17.500.000 '
-							stock='5'
-							label='Add to Cart'
-						/>
-						<SmallCard
-							img='https://via.placeholder.com/300.png/09f/fff'
-							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
-							price='15.500.000 '
-							stock='1'
-							label='Add to Cart'
-						/>
-						<SmallCard
-							img='https://via.placeholder.com/300.png/09f/fff'
-							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
-							price='17.500.000 '
-							stock='6'
-							label='Add to Cart'
-						/>
-						<SmallCard
-							img='https://via.placeholder.com/300.png/09f/fff'
-							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
-							price='16.700.000 '
-							stock='2'
-							label='Add to Cart'
-						/>
-						<SmallCard
-							img='https://via.placeholder.com/300.png/09f/fff'
-							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
-							price='16.500.000 '
+							product='Apple MacBook Pro 2021 14 16 Inch M1 Max 16GB 32 512GB'
+							price='28.540.000'
 							stock='3'
 							label='Add to Cart'
 						/>
 						<SmallCard
 							img='https://via.placeholder.com/300.png/09f/fff'
-							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
-							price='17.500.000 '
-							stock='5'
-							label='Add to Cart'
-						/>
-						<SmallCard
-							img='https://via.placeholder.com/300.png/09f/fff'
-							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
-							price='15.500.000 '
-							stock='1'
-							label='Add to Cart'
-						/>
-						<SmallCard
-							img='https://via.placeholder.com/300.png/09f/fff'
-							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
-							price='17.500.000 '
-							stock='6'
-							label='Add to Cart'
-						/>
-						<SmallCard
-							img='https://via.placeholder.com/300.png/09f/fff'
-							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
-							price='16.700.000 '
-							stock='2'
-							label='Add to Cart'
-						/>
-						<SmallCard
-							img='https://via.placeholder.com/300.png/09f/fff'
-							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
-							price='16.500.000 '
+							product='Apple MacBook Pro 2021 14 16 Inch M1 Max 16GB 32 512GB'
+							price='28.540.000'
 							stock='3'
 							label='Add to Cart'
 						/>
 						<SmallCard
 							img='https://via.placeholder.com/300.png/09f/fff'
-							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
-							price='17.500.000 '
-							stock='5'
+							product='Apple MacBook Pro 2021 14 16 Inch M1 Max 16GB 32 512GB'
+							price='28.540.000'
+							stock='3'
 							label='Add to Cart'
 						/>
 						<SmallCard
 							img='https://via.placeholder.com/300.png/09f/fff'
-							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
-							price='15.500.000 '
-							stock='1'
+							product='Apple MacBook Pro 2021 14 16 Inch M1 Max 16GB 32 512GB'
+							price='28.540.000'
+							stock='3'
 							label='Add to Cart'
 						/>
 						<SmallCard
 							img='https://via.placeholder.com/300.png/09f/fff'
-							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
-							price='17.500.000 '
-							stock='6'
+							product='Apple MacBook Pro 2021 14 16 Inch M1 Max 16GB 32 512GB'
+							price='28.540.000'
+							stock='3'
 							label='Add to Cart'
 						/>
 						<SmallCard
 							img='https://via.placeholder.com/300.png/09f/fff'
-							product='IPASON Desktop PC Geforce Gaming Computer 1650/3060/3070/3080Ti/ 1050Ti AMD R5 5600X'
-							price='16.700.000 '
-							stock='2'
+							product='Apple MacBook Pro 2021 14 16 Inch M1 Max 16GB 32 512GB'
+							price='28.540.000'
+							stock='3'
+							label='Add to Cart'
+						/>
+						<SmallCard
+							img='https://via.placeholder.com/300.png/09f/fff'
+							product='Apple MacBook Pro 2021 14 16 Inch M1 Max 16GB 32 512GB'
+							price='28.540.000'
+							stock='3'
+							label='Add to Cart'
+						/>
+						<SmallCard
+							img='https://via.placeholder.com/300.png/09f/fff'
+							product='Apple MacBook Pro 2021 14 16 Inch M1 Max 16GB 32 512GB'
+							price='28.540.000'
+							stock='3'
+							label='Add to Cart'
+						/>
+						<SmallCard
+							img='https://via.placeholder.com/300.png/09f/fff'
+							product='Apple MacBook Pro 2021 14 16 Inch M1 Max 16GB 32 512GB'
+							price='28.540.000'
+							stock='3'
 							label='Add to Cart'
 						/>
 					</section>
