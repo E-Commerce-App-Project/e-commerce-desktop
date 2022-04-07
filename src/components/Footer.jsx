@@ -3,7 +3,7 @@ import React from 'react';
 export default function Footer() {
 	return (
 		<nav className='navbar navbar-expand-lg bottom-0 pb-0 bg-light border-top border-2'>
-			<div className='container justify-content-between py-5'>
+			<div className='container justify-content-between py-2'>
 				<a className='navbar-brand text-primary fw-bold me-5' href='/'>
 					LOGO
 				</a>
