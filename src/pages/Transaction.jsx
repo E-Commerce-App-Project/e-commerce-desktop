@@ -8,13 +8,13 @@ function Transaction() {
 	document.title = 'Transaction Detail';
 
 	return (
-		<div>
+		<>
 			<Layout>
 				<main>
 					<div
-						className='container bg-light my-3 py-lg-3 px-lg-5'
+						className='container bg-light my-5 py-lg-3 px-lg-5'
 						style={{ borderRadius: 1 + 'em' }}>
-						<div className='row'>
+						<div className='row mt-lg-4'>
 							<ReceiptCard
 								img='https://via.placeholder.com/300.png/09f/fff'
 								product='Apple MacBook Pro 2021 14 16 Inch M1 Max 16GB 32 512GB'
@@ -33,24 +33,28 @@ function Transaction() {
 								Total Harga
 							</h6>
 						</div>
-						<div className='position-relative'>
-							<Link to='/'>
-								<Button
-									variant='warning'
-									className='text-uppercase fw-bold px-5 position-absolute bottom-0 start-50 translate-middle-x
+						<div className='container'>
+							<div className='row'>
+								<div className='col align-self-center text-center'>
+									<Link to='/'>
+										<Button
+											variant='warning'
+											className='text-uppercase fw-bold px-5 
 							'
-									style={{
-										borderRadius: '0.5rem',
-										// width: '50%',
-									}}>
-									OK
-								</Button>
-							</Link>
+											style={{
+												borderRadius: '0.5rem',
+												// width: '200px',
+											}}>
+											OK
+										</Button>
+									</Link>
+								</div>
+							</div>
 						</div>
 					</div>
 				</main>
 			</Layout>
-		</div>
+		</>
 	);
 }
 
