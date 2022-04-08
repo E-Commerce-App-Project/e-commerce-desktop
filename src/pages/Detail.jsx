@@ -12,10 +12,10 @@ export default function Detail() {
 	const [products, setProducts] = useState([]);
 
 	useEffect(() => {
-		fetchProduct();
+		fetchProducts();
 	}, []);
 
-	const fetchProduct = async () => {
+	const fetchProducts = async () => {
 		const { product_id } = params;
 		await axios
 			.get(

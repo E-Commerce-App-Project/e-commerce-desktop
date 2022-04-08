@@ -65,6 +65,7 @@ export default function AddProduct() {
 										}
 									/>
 								</Form.Group>
+
 								<Form.Group
 									className='mb-3'
 									controlId='formBasicDescription'>
