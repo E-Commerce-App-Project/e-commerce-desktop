@@ -18,7 +18,7 @@ function App() {
 		axios
 			.get(`https://web-app-zgunz42.cloud.okteto.net/api/v1/products`)
 			.then((response) => {
-				setProducts(response.data.products);
+				setProducts(response.data.data);
 			})
 			.catch((err) => {
 				console.log(err);
