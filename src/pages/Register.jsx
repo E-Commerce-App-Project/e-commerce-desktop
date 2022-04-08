@@ -25,7 +25,7 @@ export default function Register() {
 			.then((response) => {
 				const { status } = response.data;
 				if (status === 'success') {
-					navigate('/login');
+					navigate('/profile');
 				} else {
 					alert('Register failed');
 				}

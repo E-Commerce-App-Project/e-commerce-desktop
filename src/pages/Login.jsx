@@ -20,7 +20,7 @@ export default function Login() {
 				const { data, status } = response.data;
 				localStorage.setItem('token', data.token);
 				if (status === 'success') {
-					navigate('/');
+					navigate('/profile');
 				} else {
 					alert('Login failed');
 				}
