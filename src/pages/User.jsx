@@ -32,7 +32,6 @@ export default function User() {
 				`https://web-app-zgunz42.cloud.okteto.net/api/v1/users/profile`
 			)
 			.then((response) => {
-				console.log(response);
 				setName(response.data.name);
 				setEmail(response.data.email);
 				setPhone(response.data.phone_number);

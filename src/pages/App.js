@@ -44,14 +44,6 @@ function App() {
 								/>
 							);
 						})}
-						{/* Dummy purposes */}
-						<SmallCard
-							img='https://via.placeholder.com/300.png/09f/fff'
-							product='Apple MacBook Pro 2021 14 16 Inch M1 Max 16GB 32 512GB'
-							price='28.540.000'
-							stock='3'
-							label='Add to Cart'
-						/>
 					</section>
 				</main>
 			</Layout>
