@@ -9,9 +9,9 @@ export default function Navbar() {
 				<div
 					className='collapse navbar-collapse justify-content-between'
 					id='navbarSupportedContent'>
-					<a className='navbar-brand text-primary fw-bold' href='/'>
+					<Link to='/' className='navbar-brand text-primary fw-bold'>
 						LOGO
-					</a>
+					</Link>
 					<FormControl
 						type='text'
 						placeholder='Search'
@@ -22,12 +22,18 @@ export default function Navbar() {
 					</Link>
 					<div className='d-flex'>
 						<ButtonGroup className='btn-group'>
-							<Button variant='outline-primary' className='px-4'>
-								Login
-							</Button>
-							<Button variant='primary' className='px-4'>
-								Register
-							</Button>
+							<Link to='/login'>
+								<Button
+									variant='outline-primary'
+									className='px-4'>
+									Login
+								</Button>
+							</Link>
+							<Link to='/register'>
+								<Button variant='primary' className='px-4'>
+									Register
+								</Button>
+							</Link>
 						</ButtonGroup>
 					</div>
 				</div>
