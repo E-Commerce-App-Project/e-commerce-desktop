@@ -11,7 +11,7 @@ const SmallCard = ({ img, product, price, stock, label }) => {
 	return (
 		<>
 			<div className='col-lg-2 col-auto mx-md-0 mx-lg-2 my-2'>
-				<Link to={'/detail'}>
+				<Link to={`/detail/${product.id}`}>
 					<img
 						src={img}
 						alt='product'
