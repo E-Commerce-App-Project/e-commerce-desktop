@@ -1,13 +1,10 @@
 import axios from 'axios';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { useEffect, useState } from 'react';
-import { SmallCard } from '../components/Card';
+import React, { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
-import '../styles/App.css';
-import { withRouter } from '../utils/navigation';
+import { SmallCard } from '../components/Card';
 
-function App() {
-	document.title = 'E-Commerce App';
+export default function Store() {
+	document.title = 'My Store';
 	const [products, setProducts] = useState([]);
 
 	useEffect(() => {
@@ -26,9 +23,10 @@ function App() {
 	};
 
 	return (
-		<div className='App'>
+		<div>
 			<Layout>
 				<main>
+					<h2 className='text-center my-3 fw-bold'>My Store</h2>
 					<section
 						id='listProduct'
 						className='row justify-content-center my-2'>
@@ -44,19 +42,9 @@ function App() {
 								/>
 							);
 						})}
-						{/* Dummy purposes */}
-						<SmallCard
-							img='https://via.placeholder.com/300.png/09f/fff'
-							product='Apple MacBook Pro 2021 14 16 Inch M1 Max 16GB 32 512GB'
-							price='28.540.000'
-							stock='3'
-							label='Add to Cart'
-						/>
 					</section>
 				</main>
 			</Layout>
 		</div>
 	);
 }
-
-export default withRouter(App);
