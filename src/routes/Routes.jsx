@@ -8,6 +8,7 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import User from '../pages/User';
 import Store from '../pages/Store';
+import AddProduct from '../pages/AddProduct';
 
 function Routing() {
 	return (
@@ -21,6 +22,7 @@ function Routing() {
 				<Route path='/transaction' element={<Transaction />} />
 				<Route path='/cart' element={<ShoppingCart />} />
 				<Route path='/store' element={<Store />} />
+				<Route path='/new-product' element={<AddProduct />} />
 			</Routes>
 		</BrowserRouter>
 	);

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
 export default function User() {
+	document.title = 'My Profile';
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [phone, setPhone] = useState('');

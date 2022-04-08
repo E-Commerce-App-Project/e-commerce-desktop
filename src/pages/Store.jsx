@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
 import { SmallCard } from '../components/Card';
+import { Link } from 'react-router-dom';
 
 export default function Store() {
 	document.title = 'My Store';
@@ -27,6 +28,9 @@ export default function Store() {
 			<Layout>
 				<main>
 					<h2 className='text-center my-3 fw-bold'>My Store</h2>
+					<Link to='/new-product'>
+						<h5 className='text-black text-end'>Add Product</h5>
+					</Link>
 					<section
 						id='listProduct'
 						className='row justify-content-center my-2'>
@@ -38,7 +42,7 @@ export default function Store() {
 									product={product.name}
 									price={product.price}
 									img={product.image}
-									label='Add to Cart'
+									label='Remove'
 								/>
 							);
 						})}
