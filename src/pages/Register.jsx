@@ -5,6 +5,7 @@ import { Button, Form, Row, Col, FormLabel } from 'react-bootstrap';
 import Layout from '../components/Layout';
 
 export default function Register() {
+	document.title = 'Register';
 	const navigate = useNavigate();
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
