@@ -7,6 +7,15 @@ import Layout from '../components/Layout';
 function Transaction() {
 	document.title = 'Transaction Detail';
 
+	const receipt = JSON.parse(localStorage.getItem('cart'));
+	function countTotal() {
+		let total = 0;
+		for (let i = 0; i < receipt.length; i++) {
+			total += parseInt(receipt[i].price);
+		}
+		return total;
+	}
+
 	return (
 		<>
 			<Layout>
@@ -15,23 +24,23 @@ function Transaction() {
 						className='container bg-light my-5 py-lg-3 px-lg-5'
 						style={{ borderRadius: 1 + 'em' }}>
 						<div className='row mt-lg-4'>
-							<ReceiptCard
-								img='https://via.placeholder.com/300.png/09f/fff'
-								product='Apple MacBook Pro 2021 14 16 Inch M1 Max 16GB 32 512GB'
-								price={28540000}
-								qty={3}
-							/>
-							<ReceiptCard
-								img='https://via.placeholder.com/300.png/09f/fff'
-								product='Apple MacBook Pro 2021 14 16 Inch M1 Max 16GB 32 512GB'
-								price={28540000}
-								qty={1}
-							/>
+							{receipt.map((item, index) => {
+								return (
+									<ReceiptCard
+										key={index}
+										id={item.id}
+										product={item.product}
+										price={item.price}
+										img={item.image}
+										qty={item.qty}
+									/>
+								);
+							})}
 						</div>
 						<div className='col align-self-end'>
-							<h6 className='text-end col-auto mb-3 me-4'>
-								Total Harga
-							</h6>
+							<h5 className='text-end col-auto mb-3 me-4'>
+								Total Harga : Rp.{countTotal().toLocaleString()}
+							</h5>
 						</div>
 						<div className='container'>
 							<div className='row'>
@@ -43,7 +52,6 @@ function Transaction() {
 							'
 											style={{
 												borderRadius: '0.5rem',
-												// width: '200px',
 											}}>
 											OK
 										</Button>
