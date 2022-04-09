@@ -32,7 +32,9 @@ function App() {
 									key={index}
 									img={item.image}
 									product={item.product}
-									price={item.price}
+									price={parseInt(
+										item.price
+									).toLocaleString()}
 									stock={item.stock}
 									label={'Add to Cart'}
 									click={() => addCart(item)}
