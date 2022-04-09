@@ -1,4 +1,3 @@
-import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import { SmallCard } from '../components/Card';
@@ -8,23 +7,8 @@ import { withRouter } from '../utils/navigation';
 
 function App() {
 	document.title = 'E-Commerce App';
-	const [products, setProducts] = useState([]);
 
-	useEffect(() => {
-		fetchProducts();
-	}, []);
-
-	const fetchProducts = async () => {
-		axios
-			.get(`https://web-app-zgunz42.cloud.okteto.net/api/v1/products`)
-			.then((response) => {
-				setProducts(response.data.data);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-	};
-
+	const products = JSON.parse(localStorage.getItem('product'));
 	return (
 		<div className='App'>
 			<Layout>
@@ -32,15 +16,15 @@ function App() {
 					<section
 						id='listProduct'
 						className='row justify-content-center my-2'>
-						{products.map((product) => {
+						{products.map((item, index) => {
 							return (
 								<SmallCard
-									key={product.id}
-									id={product.id}
-									product={product.name}
-									price={product.price}
-									img={product.image}
-									label='Add to Cart'
+									key={index}
+									img={item.image}
+									product={item.product}
+									price={item.price}
+									stock={item.stock}
+									label={'Add to Cart'}
 								/>
 							);
 						})}

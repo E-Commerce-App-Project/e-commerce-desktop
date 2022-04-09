@@ -18,29 +18,31 @@ export default function AddProduct() {
 	const [description, setDescription] = useState('');
 	const [stock, setStock] = useState('');
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		await axios
-			.post(`https://web-app-zgunz42.cloud.okteto.net/api/v1/products`, {
-				name: product,
-				price: price,
-				image: image,
-				description: description,
-				stock: stock,
-			})
-			.then((response) => {
-				const { status } = response.data;
-				if (status === 'success') {
-					alert('Product added');
-					navigate('/store');
-				} else {
-					alert('Product failed');
-				}
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+	const handleSubmit = () => {
+		const productItem = {
+			product,
+			price,
+			image,
+			description,
+			stock,
+		};
+		let getLocal = JSON.parse(localStorage.getItem('product'));
+		if (getLocal === null) {
+			let newLocal = [];
+			newLocal.push(productItem);
+			localStorage.setItem('product', JSON.stringify(newLocal));
+		} else {
+			getLocal.push(productItem);
+			localStorage.setItem('product', JSON.stringify(getLocal));
+		}
+		setProduct('');
+		setPrice('');
+		setImage('');
+		setDescription('');
+		setStock('');
+		alert('Product Added');
 	};
+
 	return (
 		<Layout>
 			<div
@@ -70,6 +72,7 @@ export default function AddProduct() {
 									className='mb-3'
 									controlId='formBasicDescription'>
 									<Form.Label>Image</Form.Label>
+									<h6>please input image URL</h6>
 									<Form.Control
 										type='text'
 										placeholder='Add images url'
