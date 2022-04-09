@@ -3,6 +3,7 @@ import { SmallCard } from '../components/Card';
 import Layout from '../components/Layout';
 import '../styles/App.css';
 import { withRouter } from '../utils/navigation';
+import Swal from 'sweetalert2';
 
 function App() {
 	document.title = 'E-Commerce App';
@@ -17,7 +18,12 @@ function App() {
 		} else {
 			localStorage.setItem('cart', JSON.stringify([item]));
 		}
-		alert('Product added to cart');
+		Swal.fire({
+			icon: 'success',
+			title: 'Product added to cart',
+			showConfirmButton: false,
+			timer: 1500,
+		});
 	};
 	return (
 		<div className='App'>

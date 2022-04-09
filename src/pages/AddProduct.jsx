@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-import { Button } from 'react-bootstrap';
-import Form from 'react-bootstrap/Form';
+import { Button, Row, Col, Form } from 'react-bootstrap';
 import { Container } from 'react-bootstrap';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Layout from '../components/Layout';
-import axios from 'axios';
+import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 
 export default function AddProduct() {
@@ -40,7 +37,13 @@ export default function AddProduct() {
 		setImage('');
 		setDescription('');
 		setStock('');
-		alert('Product Added');
+		Swal.fire({
+			position: 'center',
+			icon: 'success',
+			title: 'Product Added',
+			showConfirmButton: false,
+			timer: 1500,
+		});
 	};
 
 	return (

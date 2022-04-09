@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 import { WideCard } from '../components/Card';
 import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 function ShoppingCart() {
 	document.title = 'Shopping Cart';
@@ -46,7 +47,12 @@ function ShoppingCart() {
 												'cart',
 												JSON.stringify(getLocal)
 											);
-											alert('Product Removed');
+											Swal.fire({
+												icon: 'success',
+												title: 'Product removed',
+												showConfirmButton: false,
+												timer: 1500,
+											});
 											navigate('/cart');
 										}}
 									/>

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import Swal from 'sweetalert2';
 
 export default function User() {
 	document.title = 'My Profile';
@@ -75,7 +76,11 @@ export default function User() {
 				console.log(res);
 			})
 			.catch((err) => {
-				alert('Logout failed');
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Logout Failed',
+				});
 			});
 	};
 

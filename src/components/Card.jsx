@@ -1,17 +1,22 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-const SmallCard = ({ img, product, price, stock, label, click }) => {
+const SmallCard = ({ img, product, price, stock, label, click, id }) => {
 	const reqLogin = () => {
 		if (localStorage.getItem('token') === null) {
-			alert('Please Login First');
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'Please Login First',
+			});
 		}
 	};
 	return (
 		<>
 			<div className='col-lg-2 col-auto mx-md-0 mx-lg-2 my-2'>
-				<Link to={`/detail/${product.id}`}>
+				<Link to={`/detail/${id}`}>
 					<img
 						src={img}
 						alt='product'
@@ -102,7 +107,8 @@ const WideCard = ({ img, product, price, label, click }) => {
 	);
 };
 
-const ReceiptCard = ({ img, product, price, qty }) => {
+const ReceiptCard = ({ img, product, price }) => {
+	let qty = 1;
 	return (
 		<>
 			<div className='col-lg-2 mx-md-0 mx-lg-2 my-2'>
@@ -141,7 +147,11 @@ const ReceiptCard = ({ img, product, price, qty }) => {
 const BigCard = ({ img, product, price, stock, label }) => {
 	const reqLogin = () => {
 		if (localStorage.getItem('token') === null) {
-			alert('Please Login First');
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'Please Login First',
+			});
 		}
 	};
 	return (

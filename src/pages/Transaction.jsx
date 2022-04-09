@@ -32,7 +32,6 @@ function Transaction() {
 										product={item.product}
 										price={item.price}
 										img={item.image}
-										qty={item.qty}
 									/>
 								);
 							})}
@@ -48,8 +47,7 @@ function Transaction() {
 									<Link to='/'>
 										<Button
 											variant='warning'
-											className='text-uppercase fw-bold px-5 
-							'
+											className='text-uppercase fw-bold px-5'
 											style={{
 												borderRadius: '0.5rem',
 											}}>

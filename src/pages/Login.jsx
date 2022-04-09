@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default function Login() {
 	document.title = 'Login';
@@ -23,11 +24,22 @@ export default function Login() {
 				if (status === 'success') {
 					navigate('/profile');
 				} else {
-					alert('Login failed');
+					Swal.fire({
+						icon: 'error',
+						title: 'Oops...',
+						text: 'Something went wrong!',
+						footer: '<a href>Why do I have this issue?</a>',
+					});
 				}
 			})
 			.catch((err) => {
-				console.log(err);
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Something went wrong!',
+				});
+				setEmail('');
+				setPassword('');
 			});
 	};
 

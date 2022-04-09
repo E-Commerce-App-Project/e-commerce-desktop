@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Button, Form, Row, Col, FormLabel } from 'react-bootstrap';
 import Layout from '../components/Layout';
+import Swal from 'sweetalert2';
 
 export default function Register() {
 	document.title = 'Register';
@@ -28,7 +29,12 @@ export default function Register() {
 				if (status === 'success') {
 					navigate('/profile');
 				} else {
-					alert('Register failed');
+					Swal.fire({
+						title: 'Error',
+						text: 'Email has been used',
+						icon: 'error',
+						confirmButtonText: 'OK',
+					});
 				}
 			})
 			.catch((err) => {
