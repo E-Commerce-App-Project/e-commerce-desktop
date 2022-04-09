@@ -48,6 +48,9 @@ export default function AddProduct() {
 			<div
 				className='container bg-light my-5 py-lg-3 px-lg-5'
 				style={{ borderRadius: 1 + 'em' }}>
+				<h2 className='text-center text-primary mt-2 text-uppercase'>
+					Add Product
+				</h2>
 				<Container className='m-5'>
 					<Row>
 						<Col xs={12} md={8}>
@@ -71,8 +74,10 @@ export default function AddProduct() {
 								<Form.Group
 									className='mb-3'
 									controlId='formBasicDescription'>
-									<Form.Label>Image</Form.Label>
-									<h6>please input image URL</h6>
+									<Form.Label>
+										Image (please input image URL)
+									</Form.Label>
+
 									<Form.Control
 										type='text'
 										placeholder='Add images url'
