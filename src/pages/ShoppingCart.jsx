@@ -4,9 +4,38 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Form, FormCheck } from 'react-bootstrap';
 import { WideCard } from '../components/Card';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function ShoppingCart() {
 	document.title = 'Shopping Cart';
+	const [cart, setCart] = useState([]);
+
+	useEffect(() => {
+		fetchCart();
+	}, []);
+
+	const fetchCart = async () => {
+		axios
+			.get(
+				`https://web-app-zgunz42.cloud.okteto.net/api/v1/cart`,
+				{},
+				{
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization:
+							'Bearer ' + localStorage.getItem('token'),
+					},
+				}
+			)
+			.then((res) => {
+				console.log(res.data);
+				// setCart(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
 
 	return (
 		<div>

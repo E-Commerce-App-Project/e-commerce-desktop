@@ -4,6 +4,7 @@ import Layout from '../components/Layout';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
+
 export default function User() {
 	document.title = 'My Profile';
 	const [name, setName] = useState('');
@@ -15,10 +16,47 @@ export default function User() {
 		await axios
 			.delete(`https://web-app-zgunz42.cloud.okteto.net/api/v1/users`)
 			.then((res) => {
+				alert(res);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
+	const updateProfile = async () => {
+		await axios
+			.put(`https://web-app-zgunz42.cloud.okteto.net/api/v1/users`, {
+				name: name,
+				email: email,
+				phone: phone,
+				address: address,
+			})
+			.then((res) => {
 				console.log(res);
 			})
 			.catch((err) => {
 				console.log(err);
+			});
+	};
+
+	const logout = async () => {
+		await axios
+			.post(
+				`https://web-app-zgunz42.cloud.okteto.net/api/v1/logout`,
+				{},
+				{
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization:
+							'Bearer ' + localStorage.getItem('token'),
+					},
+				}
+			)
+			.then((res) => {
+				console.log(res);
+			})
+			.catch((err) => {
+				alert('Logout failed');
 			});
 	};
 
@@ -32,17 +70,16 @@ export default function User() {
 				`https://web-app-zgunz42.cloud.okteto.net/api/v1/users/profile`
 			)
 			.then((response) => {
-				setName(response.data.name);
-				setEmail(response.data.email);
-				setPhone(response.data.phone_number);
-				setAddress(response.data.address);
+				setName(response.data.data.name);
+				setEmail(response.data.data.email);
+				setPhone(response.data.data.phone_number);
+				setAddress(response.data.data.address);
 			})
 			.catch((err) => {
 				console.log(err);
 			});
 	};
 
-	console.log(name);
 	return (
 		<div>
 			<Layout>
@@ -53,36 +90,87 @@ export default function User() {
 							style={{ borderRadius: 1 + 'em' }}>
 							<h2 className='text-center'>User Profile</h2>
 							<Link to='/store'>
-								<i className='fa-solid fa-shop float-end '></i>
+								<i className='fa-solid fa-shop float-end mb-4'></i>
 							</Link>
 							<div className='justify-content-center my-3'>
-								<h6 className='mt-3'>Name</h6>
+								<div className='d-flex justify-content-between mt-5'>
+									<h6 className='mt-3'>Name</h6>
+									<Button
+										size='sm'
+										onClick={() => {
+											document.getElementById(
+												'name'
+											).disabled = false;
+										}}>
+										EDIT
+									</Button>
+								</div>
 								<input
 									className='form-control'
 									type='text'
+									id='name'
 									value={name}
-									readOnly
+									disabled
 								/>
-								<h6 className='mt-3'>Email</h6>
+								<div className='d-flex justify-content-between mt-2'>
+									<h6 className='mt-3'>Email</h6>
+									<Button
+										size='sm'
+										onClick={() => {
+											document.getElementById(
+												'email'
+											).disabled = false;
+										}}>
+										EDIT
+									</Button>
+								</div>
 								<input
 									className='form-control'
 									type='text'
 									value={email}
-									readOnly
+									id='email'
+									onChange={(e) => setEmail(e.target.value)}
+									disabled
 								/>
-								<h6 className='mt-3'>Phone Number</h6>
+								<div className='d-flex justify-content-between mt-2'>
+									<h6 className='mt-3'>Phone Number</h6>
+									<Button
+										size='sm'
+										onClick={() => {
+											document.getElementById(
+												'phone'
+											).disabled = false;
+										}}>
+										{' '}
+										EDIT
+									</Button>
+								</div>
 								<input
 									className='form-control'
 									type='text'
 									value={phone}
-									readOnly
+									id='phone'
+									onChange={(e) => setPhone(e.target.value)}
+									disabled
 								/>
-								<h6 className='mt-3'>Address</h6>
+								<div className='d-flex justify-content-between mt-2'>
+									<h6 className='mt-3'>Address</h6>
+									<Button
+										size='sm'
+										onClick={() => {
+											document.getElementById(
+												'address'
+											).disabled = false;
+										}}>
+										EDIT
+									</Button>
+								</div>
 								<input
 									className='form-control'
 									type='text'
 									value={address}
-									readOnly
+									id='address'
+									disabled
 								/>
 							</div>
 							<Button
@@ -90,6 +178,18 @@ export default function User() {
 								className='mt-3 text-center justify-content-center mx-auto my-3'
 								onClick={deleteUser}>
 								Delete Account
+							</Button>
+							<Button
+								variant='primary'
+								onClick={updateProfile}
+								className='mt-3 text-center justify-content-center mx-auto my-3'>
+								Update Profile
+							</Button>
+							<Button
+								variant='success'
+								onClick={logout}
+								className='mt-3 text-center justify-content-center mx-auto my-3'>
+								Logout
 							</Button>
 						</div>
 					</section>

@@ -1,17 +1,34 @@
+import axios from 'axios';
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const SmallCard = ({ img, product, price, stock, label }) => {
+const SmallCard = ({ img, product, price, stock, label, navigate }) => {
 	const reqLogin = () => {
 		if (localStorage.getItem('token') === null) {
 			alert('Please Login First');
 		}
 	};
+
+	const addToCart = async () => {
+		await axios.post(
+			`https://web-app-zgunz42.cloud.okteto.net/api/v1/cart`,
+			{
+				product_id: 2,
+				qty: 1,
+			},
+			{
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem('token')}`,
+				},
+			}
+		);
+	};
+
 	return (
 		<>
 			<div className='col-lg-2 col-auto mx-md-0 mx-lg-2 my-2'>
-				<Link to={`/detail/${product.id}`}>
+				<Link to={navigate}>
 					<img
 						src={img}
 						alt='product'
@@ -42,7 +59,7 @@ const SmallCard = ({ img, product, price, stock, label }) => {
 						variant='warning'
 						className=' text-uppercase fw-bold'
 						style={{ borderRadius: '0.5rem' }}
-						onClick={reqLogin}>
+						onClick={addToCart}>
 						{label}
 					</Button>
 				</div>

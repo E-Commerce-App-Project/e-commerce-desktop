@@ -15,7 +15,7 @@ function Routing() {
 		<BrowserRouter>
 			<Routes>
 				<Route path='/' element={<App />} />
-				<Route path='/detail/:id' element={<Detail />} />
+				<Route path='/detail/:product_id' element={<Detail />} />
 				<Route path='/login' element={<Login />} />
 				<Route path='/profile' element={<User />} />
 				<Route path='/register' element={<Register />} />

@@ -16,7 +16,7 @@ export default function Register() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		await axios
-			.post(`https://web-app-zgunz42.cloud.okteto.net/api/v1/users`, {
+			.post(`https://web-app-zgunz42.cloud.okteto.net/api/v1/register`, {
 				name: name,
 				email: email,
 				password: password,

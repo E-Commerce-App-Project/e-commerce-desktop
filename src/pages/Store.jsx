@@ -15,8 +15,11 @@ export default function Store() {
 
 	const fetchProducts = async () => {
 		axios
-			.get(`https://web-app-zgunz42.cloud.okteto.net/api/v1/products`)
+			.get(
+				`https://web-app-zgunz42.cloud.okteto.net/api/v1/products/profile`
+			)
 			.then((response) => {
+				console.log(response.data.data);
 				setProducts(response.data.data);
 			})
 			.catch((err) => {
@@ -30,18 +33,18 @@ export default function Store() {
 				<main>
 					<h2 className='text-center my-3 fw-bold'>My Store</h2>
 					<Link to='/new-product'>
-						<Button variant='success float-end' className='my-3'>
+						<Button variant='success my-2' className='my-3'>
 							Add Product
 						</Button>
 					</Link>
 					<section
 						id='listProduct'
 						className='row justify-content-center my-2'>
-						{products.map((product) => {
+						{/* {products.map((product) => {
 							return (
 								<SmallCard
 									key={product.id}
-									id={product.id}
+									id={product.product_id}
 									product={product.name}
 									price={product.price}
 									img={product.image}
@@ -49,7 +52,7 @@ export default function Store() {
 									label='Remove'
 								/>
 							);
-						})}
+						})} */}
 					</section>
 				</main>
 			</Layout>
