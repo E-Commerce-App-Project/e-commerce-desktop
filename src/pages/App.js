@@ -1,5 +1,4 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useEffect, useState } from 'react';
 import { SmallCard } from '../components/Card';
 import Layout from '../components/Layout';
 import '../styles/App.css';
@@ -9,6 +8,17 @@ function App() {
 	document.title = 'E-Commerce App';
 
 	const products = JSON.parse(localStorage.getItem('product'));
+
+	const addCart = (item) => {
+		let getLocal = JSON.parse(localStorage.getItem('cart'));
+		if (getLocal) {
+			getLocal.push(item);
+			localStorage.setItem('cart', JSON.stringify(getLocal));
+		} else {
+			localStorage.setItem('cart', JSON.stringify([item]));
+		}
+		alert('Product added to cart');
+	};
 	return (
 		<div className='App'>
 			<Layout>
@@ -25,6 +35,7 @@ function App() {
 									price={item.price}
 									stock={item.stock}
 									label={'Add to Cart'}
+									click={() => addCart(item)}
 								/>
 							);
 						})}
