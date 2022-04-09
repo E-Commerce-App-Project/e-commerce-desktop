@@ -3,11 +3,15 @@ import Layout from '../components/Layout';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Form, FormCheck } from 'react-bootstrap';
 import { WideCard } from '../components/Card';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function ShoppingCart() {
 	document.title = 'Shopping Cart';
+	const navigate = useNavigate();
+	const shoppingCart = JSON.parse(localStorage.getItem('cart'));
 
+	const total = shoppingCart.price;
+	console.log(total);
 	return (
 		<div>
 			<Layout>
@@ -42,18 +46,29 @@ function ShoppingCart() {
 
 						{/* #2 Selected Product */}
 						<div className='row'>
-							<WideCard
-								img='https://via.placeholder.com/300.png/09f/fff'
-								product='Apple MacBook Pro 2021 14 16 Inch M1 Max 16GB 32 512GB'
-								price={28540000}
-								label='Remove'
-							/>
-							<WideCard
-								img='https://via.placeholder.com/300.png/09f/fff'
-								product='Apple MacBook Pro 2021 14 16 Inch M1 Max 16GB 32 512GB'
-								price={28540000}
-								label='Remove'
-							/>
+							{shoppingCart.map((item, index) => {
+								return (
+									<WideCard
+										key={index}
+										img={item.image}
+										product={item.product}
+										price={item.price}
+										label={'remove'}
+										click={() => {
+											let getLocal = JSON.parse(
+												localStorage.getItem('cart')
+											);
+											getLocal.splice(index, 1);
+											localStorage.setItem(
+												'cart',
+												JSON.stringify(getLocal)
+											);
+											alert('Product Removed');
+											navigate('/cart');
+										}}
+									/>
+								);
+							})}
 						</div>
 
 						{/* #3 Total Prices */}
@@ -65,9 +80,7 @@ function ShoppingCart() {
 									<h5 className='px-5 py-0 my-0 fw-bold'>
 										TOTAL
 									</h5>
-									<h5 className='px-5 my-0 py-0'>
-										Rp. 45.040.000
-									</h5>
+									<h5 className='px-5 my-0 py-0'>{}</h5>
 								</div>
 								<div className='m-0 p-0'>
 									<Link to='/transaction'>
