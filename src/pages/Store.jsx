@@ -24,6 +24,19 @@ export default function Store() {
 			});
 	};
 
+	const deleteProduct = async (id) => {
+		await axios
+			.delete(
+				`https://web-app-zgunz42.cloud.okteto.net/api/v1/products/${id}`
+			)
+			.then((res) => {
+				console.log(res);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
 	return (
 		<div>
 			<Layout>
@@ -47,6 +60,7 @@ export default function Store() {
 									img={product.image}
 									stock={product.stock}
 									label='Remove'
+									click={deleteProduct}
 								/>
 							);
 						})}
