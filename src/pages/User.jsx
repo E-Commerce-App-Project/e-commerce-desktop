@@ -32,17 +32,16 @@ export default function User() {
 				`https://web-app-zgunz42.cloud.okteto.net/api/v1/users/profile`
 			)
 			.then((response) => {
-				setName(response.data.name);
-				setEmail(response.data.email);
-				setPhone(response.data.phone_number);
-				setAddress(response.data.address);
+				setName(response.data.data.name);
+				setEmail(response.data.data.email);
+				setPhone(response.data.data.phone_number);
+				setAddress(response.data.data.address);
 			})
 			.catch((err) => {
 				console.log(err);
 			});
 	};
 
-	console.log(name);
 	return (
 		<div>
 			<Layout>
