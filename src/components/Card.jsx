@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const SmallCard = ({ img, product, price, stock, label }) => {
+const SmallCard = ({ img, product, price, stock, label, click }) => {
 	const reqLogin = () => {
 		if (localStorage.getItem('token') === null) {
 			alert('Please Login First');
@@ -42,7 +42,7 @@ const SmallCard = ({ img, product, price, stock, label }) => {
 						variant='warning'
 						className=' text-uppercase fw-bold'
 						style={{ borderRadius: '0.5rem' }}
-						onClick={reqLogin}>
+						onClick={click}>
 						{label}
 					</Button>
 				</div>
@@ -51,20 +51,9 @@ const SmallCard = ({ img, product, price, stock, label }) => {
 	);
 };
 
-const WideCard = ({ img, product, price, label }) => {
-	let qty = 1;
-
-	function increaseQty() {
-		document.getElementById('quantity').innerHTML = qty++;
-	}
-
-	function decreaseQty() {
-		document.getElementById('quantity').innerHTML = qty--;
-		if (qty < 1) {
-			qty = 1;
-		}
-	}
-
+const WideCard = ({ img, product, price, label, click }) => {
+	const [qty, setQty] = React.useState(1);
+	const subtotal = price * qty;
 	return (
 		<>
 			<div className='col-lg-2 mx-md-0 mx-lg-2 my-2'>
@@ -87,46 +76,24 @@ const WideCard = ({ img, product, price, label }) => {
 			</div>
 			<div className='col-2 position-relative'>
 				<span className='d-flex justify-content-between'>
-					<h6 className='my-auto me-3'>Qty:</h6>
 					<div className='flex-wrap'>
-						{/* if using select option */}
-						{/* <select
-							className='form-select form-select-sm'
-							aria-label='form-select-sm example'>
-							<option value='1'>1</option>
-							<option value='2'>2</option>
-							<option value='3'>3</option>
-						</select> */}
-						{/* if using button */}
-						<div
-							className='btn-group my-2'
-							role='group'
-							aria-label='product quantity'>
-							<button
-								type='button'
-								className='btn btn-primary btn-sm border'
-								onClick={decreaseQty}>
-								-
-							</button>
-							<h6 className='my-auto px-2' id='quantity'>
-								{qty}
-							</h6>
-							<button
-								type='button'
-								className='btn btn-primary btn-sm border'
-								onClick={increaseQty}>
-								+
-							</button>
-						</div>
+						<h6 className='my-auto me-3'>Qty:</h6>
+						<input
+							type='number'
+							className='form-control'
+							value={qty}
+							onChange={(e) => setQty(e.target.value)}
+						/>
 					</div>
 				</span>
 				<span className='my-2 d-flex justify-content-between'>
 					<h6 className=''>Subtotal: </h6>
-					<h6>{(price * qty).toLocaleString()}</h6>
+					<h6>{subtotal.toLocaleString()}</h6>
 				</span>
 				<Button
 					variant='warning'
 					className='text-uppercase fw-bold px-5'
+					onClick={click}
 					style={{ borderRadius: '0.5rem' }}>
 					{label}
 				</Button>
