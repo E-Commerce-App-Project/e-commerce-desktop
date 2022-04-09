@@ -1,11 +1,12 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ReceiptCard } from '../components/Card';
 import Layout from '../components/Layout';
 
 function Transaction() {
 	document.title = 'Transaction Detail';
+	const navigate = useNavigate();
 
 	const receipt = JSON.parse(localStorage.getItem('cart'));
 	function countTotal() {
@@ -30,7 +31,7 @@ function Transaction() {
 										key={index}
 										id={item.id}
 										product={item.product}
-										price={item.price}
+										price={parseInt(item.price)}
 										img={item.image}
 									/>
 								);
@@ -44,16 +45,27 @@ function Transaction() {
 						<div className='container'>
 							<div className='row'>
 								<div className='col align-self-center text-center'>
-									<Link to='/'>
-										<Button
-											variant='warning'
-											className='text-uppercase fw-bold px-5'
-											style={{
-												borderRadius: '0.5rem',
-											}}>
-											OK
-										</Button>
-									</Link>
+									{/* <Link to='/'> */}
+									<Button
+										variant='warning'
+										className='text-uppercase fw-bold px-5'
+										onClick={() => {
+											let getLocal = JSON.parse(
+												localStorage.getItem('cart')
+											);
+											getLocal.splice(0, 7);
+											localStorage.setItem(
+												'cart',
+												JSON.stringify(getLocal)
+											);
+											navigate('/');
+										}}
+										style={{
+											borderRadius: '0.5rem',
+										}}>
+										OK
+									</Button>
+									{/* </Link> */}
 								</div>
 							</div>
 						</div>

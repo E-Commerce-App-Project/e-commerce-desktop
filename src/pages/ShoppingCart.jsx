@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
@@ -10,6 +10,8 @@ function ShoppingCart() {
 	document.title = 'Shopping Cart';
 	const navigate = useNavigate();
 	const shoppingCart = JSON.parse(localStorage.getItem('cart'));
+	const [skeleton] = useState([1, 2, 3]);
+	const [isBlank, setIsBlank] = React.useState(false);
 
 	function countTotal() {
 		let total = 0;
@@ -30,34 +32,50 @@ function ShoppingCart() {
 
 						{/* #2 Selected Product */}
 						<div className='row'>
-							{shoppingCart.map((item, index) => {
-								return (
-									<WideCard
-										key={index}
-										img={item.image}
-										product={item.product}
-										price={item.price}
-										label={'remove'}
-										click={() => {
-											let getLocal = JSON.parse(
-												localStorage.getItem('cart')
-											);
-											getLocal.splice(index, 1);
-											localStorage.setItem(
-												'cart',
-												JSON.stringify(getLocal)
-											);
-											Swal.fire({
-												icon: 'success',
-												title: 'Product removed',
-												showConfirmButton: false,
-												timer: 1500,
-											});
-											navigate('/cart');
-										}}
-									/>
-								);
-							})}
+							{isBlank
+								? skeleton.map((item, index) => {
+										return (
+											<WideCard
+												key={index}
+												id={item}
+												product={'No Items Added'}
+												price={'Rp.0'}
+												img={
+													'https://via.placeholder.com/150'
+												}
+											/>
+										);
+								  })
+								: shoppingCart.map((item, index) => {
+										return (
+											<WideCard
+												key={index}
+												img={item.image}
+												product={item.product}
+												price={parseInt(item.price)}
+												label={'remove'}
+												click={() => {
+													let getLocal = JSON.parse(
+														localStorage.getItem(
+															'cart'
+														)
+													);
+													getLocal.splice(index, 1);
+													localStorage.setItem(
+														'cart',
+														JSON.stringify(getLocal)
+													);
+													Swal.fire({
+														icon: 'success',
+														title: 'Product removed',
+														showConfirmButton: false,
+														timer: 1500,
+													});
+													navigate('/cart');
+												}}
+											/>
+										);
+								  })}
 						</div>
 
 						{/* #3 Total Prices */}
