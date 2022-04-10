@@ -10,7 +10,7 @@ function App() {
 	document.title = 'E-Commerce App';
 
 	const products = JSON.parse(localStorage.getItem('product'));
-	const [qty, setQty] = useState(1);
+	const userProducts = JSON.parse(localStorage.getItem('user-product'));
 
 	const addCart = (item) => {
 		let getLocal = JSON.parse(localStorage.getItem('cart'));
@@ -19,6 +19,7 @@ function App() {
 			getLocal.push(item);
 			localStorage.setItem('cart', JSON.stringify(getLocal));
 		} else {
+			item.qty++;
 			localStorage.setItem('cart', JSON.stringify([item]));
 		}
 		Swal.fire({
@@ -36,6 +37,22 @@ function App() {
 						id='listProduct'
 						className='row justify-content-center my-2'>
 						{products.map((item, index) => {
+							return (
+								<SmallCard
+									key={index}
+									img={item.image}
+									product={item.product}
+									price={parseInt(
+										item.price
+									).toLocaleString()}
+									stock={item.stock}
+									label={'Add to Cart'}
+									click={() => addCart(item)}
+								/>
+							);
+						})}
+						{/* User Section */}
+						{userProducts.map((item, index) => {
 							return (
 								<SmallCard
 									key={index}
