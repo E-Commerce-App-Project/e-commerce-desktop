@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 import Swal from 'sweetalert2';
 
 export default function Login() {
@@ -13,42 +13,50 @@ export default function Login() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		await axios
-			.post(`https://web-app-zgunz42.cloud.okteto.net/api/v1/login`, {
-				email: email,
-				password: password,
+		// If using localStorage
+		let getLocal = JSON.parse(localStorage.getItem('user'));
+		if (email === getLocal[1].email && password === getLocal[1].password) {
+			Swal.fire({
+				position: 'center',
+				icon: 'success',
+				title: 'Login Success',
+				showConfirmButton: false,
+				timer: 1500,
 			})
-			.then((response) => {
-				const { data, status } = response.data;
-				localStorage.setItem('token', data.token);
-				if (status === 'success') {
-					navigate('/profile');
-				} else {
-					Swal.fire({
-						icon: 'error',
-						title: 'Oops...',
-						text: 'Something went wrong!',
-						footer: '<a href>Why do I have this issue?</a>',
-					});
-				}
+			navigate('/profile');
+		} else if (email === '' || password === '') {
+			Swal.fire({
+				position: 'center',
+				icon: 'error',
+				title: 'Email or Password is empty',
+				showConfirmButton: false,
+				timer: 1500,
 			})
-			.catch((err) => {
-				Swal.fire({
-					icon: 'error',
-					title: 'Oops...',
-					text: 'Something went wrong!',
-				});
-				setEmail('');
-				setPassword('');
+		} else if (email !== getLocal[0].email || password !== getLocal[0].password) {
+			Swal.fire({
+				position: 'center',
+				icon: 'error',
+				title: 'Email or Password is wrong',
+				showConfirmButton: false,
+				timer: 1500,
+			})
+		} else {
+			Swal.fire({
+				position: 'center',
+				icon: 'error',
+				title: 'Wrong Email or Password',
+				showConfirmButton: false,
+				timer: 1500,
 			});
+		}
 	};
 
 	return (
-		<div className='bg-info overflow-auto' style={{ height: 100 + 'vh' }}>
+		<div className='bg-info overflow-auto position-relative' style={{ height: 100 + 'vh' }}>
 			<div
-				className='container bg-light ms-auto my-5 py-lg-3 px-lg-5'
+				className='container w-50 bg-light p-lg-5 position-absolute top-50 start-50 translate-middle'
 				style={{ borderRadius: 1 + 'em' }}>
-				<h1>LOGIN</h1>
+				<h2 className='text-uppercase my-2'>Login</h2>
 				<Form>
 					<Form.Group className='mb-3' controlId='formBasicEmail'>
 						<Form.Label>Email</Form.Label>
