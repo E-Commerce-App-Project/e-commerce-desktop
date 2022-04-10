@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 import React, { useState } from 'react';
 import { Button, Form, Row, Col, FormLabel } from 'react-bootstrap';
 import Layout from '../components/Layout';
@@ -16,30 +16,37 @@ export default function Register() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		await axios
-			.post(`https://web-app-zgunz42.cloud.okteto.net/api/v1/users`, {
-				name: name,
-				email: email,
-				password: password,
-				phone_number: phone,
-				address: address,
-			})
-			.then((response) => {
-				const { status } = response.data;
-				if (status === 'success') {
-					navigate('/profile');
-				} else {
-					Swal.fire({
-						title: 'Error',
-						text: 'Email has been used',
-						icon: 'error',
-						confirmButtonText: 'OK',
-					});
-				}
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+		// If using localStorage
+		const user = {
+			name,
+			email,
+			password,
+			phone,
+			address,
+		};
+		let getLocal = JSON.parse(localStorage.getItem('user'));
+		if (getLocal === null) {
+			let newLocal = [];
+			newLocal.push(user);
+			localStorage.setItem('user', JSON.stringify(newLocal));
+		} else {
+			getLocal.push(user);
+			localStorage.setItem('user', JSON.stringify(getLocal));
+		}
+		setName('');
+		setEmail('');
+		setPassword('');
+		setPhone('');
+		setAddress('');
+		Swal.fire({
+			position: 'center',
+			icon: 'success',
+			title: 'User Added',
+			showConfirmButton: false,
+			timer: 1500,
+		}).then(() => {
+			navigate('/profile');
+		});
 	};
 
 	return (
@@ -48,13 +55,14 @@ export default function Register() {
 				className='container bg-light my-5 py-lg-3 px-lg-5'
 				style={{ borderRadius: 1 + 'em' }}>
 				<Row>
+					<h2 className='text-uppercase my-2'>Register</h2>
 					<Col>
 						<Form>
 							<Form.Group
 								className='mb-3'
 								controlId='formBasicName'>
 								<FormLabel>
-									Name <span>*</span>
+									Name <strong className='text-warning'>*</strong>
 								</FormLabel>
 								<Form.Control
 									type='text'
@@ -67,7 +75,7 @@ export default function Register() {
 								className='mb-3'
 								controlId='formBasicEmail'>
 								<FormLabel>
-									Email <span>*</span>
+									Email <strong className='text-warning'>*</strong>
 								</FormLabel>
 								<Form.Control
 									type='email'
@@ -80,7 +88,7 @@ export default function Register() {
 								className='mb-3'
 								controlId='formBasicPassword'>
 								<FormLabel>
-									Password <span>*</span>
+									Password <strong className='text-warning'>*</strong>
 								</FormLabel>
 								<Form.Control
 									type='password'
@@ -96,7 +104,7 @@ export default function Register() {
 								className='mb-3'
 								controlId='formBasicPhoneNumber'>
 								<FormLabel>
-									Phone Number <span>*</span>
+									Phone Number <strong className='text-warning'>*</strong>
 								</FormLabel>
 								<Form.Control
 									type='number'
@@ -105,9 +113,11 @@ export default function Register() {
 									onChange={(e) => setPhone(e.target.value)}
 								/>
 							</Form.Group>
-							<br />
+							
 							<Form.Text className='text-muted'>
-								<span>*</span> Required
+								<h6>
+							(<strong className='text-warning'>*</strong>) Required
+								</h6>
 							</Form.Text>
 						</Form>
 					</Col>
@@ -117,7 +127,7 @@ export default function Register() {
 								className='mb-3'
 								controlId='formBasicAddress'>
 								<FormLabel>
-									Address <span>*</span>
+									Address <strong className='text-warning'>*</strong>
 								</FormLabel>
 								<Form.Control
 									as='textarea'
