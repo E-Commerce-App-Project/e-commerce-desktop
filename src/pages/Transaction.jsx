@@ -25,6 +25,14 @@ function Transaction() {
 					<div
 						className='container bg-light my-5 py-lg-3 px-lg-5'
 						style={{ borderRadius: 1 + 'em' }}>
+						<h4 className='text-center text-uppercase'>
+							Transaction Detail
+						</h4>
+						<div className='text-uppercase row text-center border-top py-2 border-bottom'>
+							<div className='col-8 h6'>Description</div>
+							<div className='col-2 h6'>Qty</div>
+							<div className='col-2 h6'>Price</div>
+						</div>
 						<div className='row mt-lg-4'>
 							{receipt.map((item, index) => {
 								return (
@@ -33,13 +41,12 @@ function Transaction() {
 										id={item.id}
 										product={item.product}
 										price={parseInt(item.price)}
-										img={item.image}
 									/>
 								);
 							})}
 						</div>
 						<div className='col align-self-end'>
-							<h5 className='text-end col-auto mb-3 me-4'>
+							<h5 className='text-end col-auto mb-3 fw-bold'>
 								Total : Rp. {countTotal().toLocaleString()}
 							</h5>
 						</div>

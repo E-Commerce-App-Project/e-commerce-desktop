@@ -94,36 +94,21 @@ const WideCard = ({ img, product, price, label, click }) => {
 	);
 };
 
-const ReceiptCard = ({ img, product, price }) => {
+const ReceiptCard = ({ product, price }) => {
 	let qty = 1;
 	return (
 		<>
-			<div className='col-lg-2 mx-md-0 mx-lg-2 my-2'>
-				<img
-					src={img}
-					alt='product'
-					className='w-100'
-					style={{ borderRadius: 1 + 'em' }}
-				/>
+			{/* Description */}
+			<div className='col-8 m-auto'>
+				<h5 className='my-2 text-uppercase w-100'>{product}</h5>
 			</div>
-			<div className='col-lg-7 bg-light me-5 my-auto'>
-				<div className='text-start mx-2'>
-					<h4 className=' text-uppercase w-100'>{product}</h4>
-				</div>
+			{/* Qty */}
+			<div className='col-2 text-center m-auto'>
+				<h5 className=''>{qty} </h5>
 			</div>
-			<div className='col-2 position-relative my-auto text-end'>
-				<span className='d-flex justify-content-between my-2'>
-					<h5 className=''>Rp. </h5>
-					<h5>{price.toLocaleString()}</h5>
-				</span>
-				<span className='d-flex justify-content-between my-2'>
-					<h5 className=''>Qty: </h5>
-					<h5 className=''>{qty} </h5>
-				</span>
-				<span className='d-flex justify-content-between text-warning my-2'>
-					<h6 className='justify-content-between'>Subtotal:</h6>
-					<h6 className=''>{(price * qty).toLocaleString()}</h6>
-				</span>
+			{/* Price */}
+			<div className='col-2 text-end m-auto'>
+				<h6 className='text-end fs-5'>Rp. {price.toLocaleString()}</h6>
 			</div>
 		</>
 	);
