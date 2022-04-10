@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import Swal from 'sweetalert2';
 
@@ -11,81 +11,69 @@ export default function User() {
 	const [email, setEmail] = useState('');
 	const [phone, setPhone] = useState('');
 	const [address, setAddress] = useState('');
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		fetchData();
 	}, []);
 
 	const fetchData = async (e) => {
-		await axios
-			.get(
-				`https://web-app-zgunz42.cloud.okteto.net/api/v1/users/profile`
-			)
-			.then((response) => {
-				setName(response.data.data.name);
-				setEmail(response.data.data.email);
-				setPhone(response.data.data.phone_number);
-				setAddress(response.data.data.address);
-			})
-			.catch((err) => {
-				console.log(err);
+		// If using localStorage
+		let getLocal = JSON.parse(localStorage.getItem('user'));
+		if (getLocal === null) {
+			Swal.fire({
+				position: 'center',
+				icon: 'error',
+				title: 'No User Found',
+				showConfirmButton: false,
+				timer: 1500,
 			});
+		} else {
+			let user = getLocal[1];
+			setName(user.name);
+			setEmail(user.email);
+			setPhone(user.phone);
+			setAddress(user.address);
+		}
 	};
 
-	const deleteUser = async () => {
-		await axios
-			.delete(`https://web-app-zgunz42.cloud.okteto.net/api/v1/users`)
-			.then((res) => {
-				console.log(res);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+	const deleteAccount = async (e) => {
+		e.preventDefault();
+		let getLocal = JSON.parse(localStorage.getItem('user'));
+		getLocal.splice(1, 1);
+		localStorage.setItem('user', JSON.stringify(getLocal));
+		Swal.fire({
+			icon: 'success',
+			title: 'Account Deleted',
+			showConfirmButton: false,
+			timer: 1500,
+		});
+		navigate('/');
 	};
 
 	const updateProfile = async () => {
-		await axios
-			.put(`https://web-app-zgunz42.cloud.okteto.net/api/v1/users`, {
-				name: name,
-				email: email,
-				phone: phone,
-				address: address,
-			})
-			.then((res) => {
-				console.log(res);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-			document.getElementById('name').setAttribute('disabled', true);
-			document.getElementById('email').setAttribute('disabled', true);
-			document.getElementById('phone').setAttribute('disabled', true);
-			document.getElementById('address').setAttribute('disabled', true);
+		document.getElementById('name').setAttribute('disabled', true);
+		document.getElementById('email').setAttribute('disabled', true);
+		document.getElementById('phone').setAttribute('disabled', true);
+		document.getElementById('address').setAttribute('disabled', true);
+		Swal.fire({
+			position: 'center',
+			icon: 'success',
+			title: 'Profile Updated',
+			showConfirmButton: false,
+			timer: 1500,
+		});
 	};
 
 	const logout = async () => {
-		await axios
-			.post(
-				`https://web-app-zgunz42.cloud.okteto.net/api/v1/logout`,
-				{},
-				{
-					headers: {
-						'Content-Type': 'application/json',
-						Authorization:
-							'Bearer ' + localStorage.getItem('token'),
-					},
-				}
-			)
-			.then((res) => {
-				console.log(res);
-			})
-			.catch((err) => {
-				Swal.fire({
-					icon: 'error',
-					title: 'Oops...',
-					text: 'Logout Failed',
-				});
-			});
+		Swal.fire({
+			position: 'center',
+			icon: 'success',
+			title: 'Logout Success',
+			showConfirmButton: false,
+			timer: 1500,
+		});
+		navigate('/');
 	};
 
 	return (
@@ -203,20 +191,23 @@ export default function User() {
 							<div className='justify-content-center'>
 								<Button
 									variant='danger'
-									className='mt-3 text-center justify-content-center mx-auto my-3 me-2'
-									onClick={deleteUser}>
-									Delete Account
+									className='mt-3 text-center justify-content-center mx-auto my-3 me-2 text-uppercase'
+									onClick={deleteAccount}>
+									<i class='fa-solid fa-trash-can me-2'></i>
+									Delete
 								</Button>
 								<Button
 									variant='primary'
-									className='mt-3 text-center justify-content-center mx-auto my-3 mx-2'
+									className='mt-3 text-center justify-content-center mx-auto my-3 mx-2 text-uppercase'
 									onClick={updateProfile}>
-									Update Profile
+									<i class='fa-solid fa-pen-to-square me-2'></i>
+									Update
 								</Button>
 								<Button
 									variant='success'
-									className='mt-3 text-center justify-content-center mx-auto my-3 ms-2'
+									className='mt-3 text-center justify-content-center mx-auto my-3 ms-2 text-uppercase'
 									onClick={logout}>
+									<i class='fa-solid fa-arrow-right-from-bracket me-2'></i>
 									Logout
 								</Button>
 							</div>
