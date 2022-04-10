@@ -1,8 +1,9 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ReceiptCard } from '../components/Card';
 import Layout from '../components/Layout';
+import Swal from 'sweetalert2';
 
 function Transaction() {
 	document.title = 'Transaction Detail';
@@ -45,10 +46,55 @@ function Transaction() {
 						<div className='container'>
 							<div className='row'>
 								<div className='col align-self-center text-center'>
-									{/* <Link to='/'> */}
 									<Button
-										variant='warning'
-										className='text-uppercase fw-bold px-5'
+										className='btn-block fw-bold text-uppercase px-4 me-2'
+										variant='danger'
+										onClick={() => {
+											Swal.fire({
+												title: 'Are you sure?',
+												text: 'Your order will be canceled',
+												type: 'warning',
+												showCancelButton: true,
+												confirmButtonColor: '#3085d6',
+												cancelButtonColor: '#d33',
+												confirmButtonText:
+													'Yes, cancel it!',
+												cancelButtonText: 'No, keep it',
+											}).then((result) => {
+												if (result.value) {
+													Swal.fire(
+														'Canceled!',
+														'Your order has been canceled.',
+														'success'
+													);
+													let getLocal = JSON.parse(
+														localStorage.getItem(
+															'cart'
+														)
+													);
+													getLocal.splice(0, 7);
+													localStorage.setItem(
+														'cart',
+														JSON.stringify(getLocal)
+													);
+													navigate('/');
+												} else if (
+													result.dismiss ===
+													Swal.DismissReason.cancel
+												) {
+													Swal.fire(
+														'Nice',
+														'Your order is safe :)',
+														'error'
+													);
+												}
+											});
+										}}>
+										Cancel
+									</Button>
+									<Button
+										variant='success'
+										className='text-uppercase fw-bold px-5 ms-2'
 										onClick={() => {
 											let getLocal = JSON.parse(
 												localStorage.getItem('cart')
@@ -58,14 +104,23 @@ function Transaction() {
 												'cart',
 												JSON.stringify(getLocal)
 											);
-											navigate('/');
+											Swal.fire({
+												title: 'Success',
+												text: 'Transaction Success',
+												icon: 'success',
+												confirmButtonText: 'OK',
+											}).then((result) => {
+												if (result.value) {
+													navigate('/');
+												}
+											});
 										}}
-										style={{
-											borderRadius: '0.5rem',
-										}}>
+										// style={{
+										// 	borderRadius: '0.5rem',
+										// }}
+									>
 										OK
 									</Button>
-									{/* </Link> */}
 								</div>
 							</div>
 						</div>
