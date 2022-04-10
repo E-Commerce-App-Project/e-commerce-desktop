@@ -25,13 +25,22 @@ function ShoppingCart() {
 		<div>
 			<Layout>
 				<main>
+					{/* <h2 className='text-center text-uppercase fw-bold text-white mt-3'>
+						My Cart
+					</h2> */}
 					<div
 						className='container bg-light my-5 py-lg-3 px-lg-5'
 						style={{ borderRadius: 1 + 'em' }}>
 						{/* #1 Choose Address */}
 
 						{/* #2 Selected Product */}
-						<div className='row'>
+						<div className='text-uppercase row text-center border-bottom'>
+							<div className='col-7 h6'>Description</div>
+							<div className='col-2 h6'>Qty</div>
+							<div className='col-1 h6'>Remove</div>
+							<div className='col-2 h6'>Price</div>
+						</div>
+						<div className='row mt-3'>
 							{isBlank
 								? skeleton.map((item, index) => {
 										return (
@@ -53,7 +62,7 @@ function ShoppingCart() {
 												img={item.image}
 												product={item.product}
 												price={parseInt(item.price)}
-												label={'remove'}
+												label={'x'}
 												click={() => {
 													let getLocal = JSON.parse(
 														localStorage.getItem(

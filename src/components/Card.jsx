@@ -50,50 +50,45 @@ const SmallCard = ({ img, product, price, stock, label, click, id }) => {
 
 const WideCard = ({ img, product, price, label, click }) => {
 	const [qty, setQty] = React.useState(1);
-	const subtotal = price * qty;
 	return (
 		<>
-			<div className='col-lg-2 mx-md-0 mx-lg-2 my-2'>
-				<Link to={'/detail'}>
-					<img
-						src={img}
-						alt='product'
-						className='w-100'
-						style={{ borderRadius: 1 + 'em' }}
-					/>
-				</Link>
+			{/* Image */}
+			<div className='col-2 my-1'>
+				<img
+					src={img}
+					alt='product'
+					className='w-100'
+					style={{ borderRadius: 1 + 'em' }}
+				/>
 			</div>
-			<div className='col-lg-7 bg-light me-5'>
-				<div className='text-start mx-2 my-2'>
-					<h5 className=' text-uppercase w-100'>{product}</h5>
-					<h6 className=' fw-bold fs-3'>
-						Rp. {price.toLocaleString()}
-					</h6>
-				</div>
+			{/* Desc Product */}
+			<div className='col-5 m-auto'>
+				<h5 className=' text-uppercase w-100'>{product}</h5>
 			</div>
-			<div className='col-2 position-relative'>
-				<span className='d-flex justify-content-between'>
-					<div className='flex-wrap'>
-						<h6 className='my-auto me-3'>Qty:</h6>
-						<input
-							type='number'
-							className='form-control'
-							value={qty}
-							onChange={(e) => setQty(e.target.value)}
-						/>
-					</div>
-				</span>
-				<span className='my-2 d-flex justify-content-between'>
-					<h6 className=''>Subtotal: </h6>
-					<h6>{subtotal.toLocaleString()}</h6>
-				</span>
+			{/* Qty */}
+			<div className='col-2 m-auto'>
+				<input
+					type='number'
+					className='form-control w-50 mx-auto'
+					value={qty}
+					onChange={(e) => setQty(e.target.value)}
+				/>
+			</div>
+			{/* Remove */}
+			<div className='col-1 m-auto text-center'>
 				<Button
-					variant='warning'
-					className='text-uppercase fw-bold px-5'
+					variant='danger'
+					className='text-uppercase fw-bold px-3 py-2 text-center btn btn-danger'
 					onClick={click}
 					style={{ borderRadius: '0.5rem' }}>
 					{label}
 				</Button>
+			</div>
+			{/* Price */}
+			<div className='col-2 m-auto'>
+				<h6 className='text-end fw-bold fs-5'>
+					Rp. {price.toLocaleString()}
+				</h6>
 			</div>
 		</>
 	);
