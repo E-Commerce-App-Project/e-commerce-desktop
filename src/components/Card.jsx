@@ -104,14 +104,12 @@ const ReceiptCard = ({ img, product, price }) => {
 	return (
 		<>
 			<div className='col-lg-2 mx-md-0 mx-lg-2 my-2'>
-				<Link to={'/detail'}>
-					<img
-						src={img}
-						alt='product'
-						className='w-100'
-						style={{ borderRadius: 1 + 'em' }}
-					/>
-				</Link>
+				<img
+					src={img}
+					alt='product'
+					className='w-100'
+					style={{ borderRadius: 1 + 'em' }}
+				/>
 			</div>
 			<div className='col-lg-7 bg-light me-5 my-auto'>
 				<div className='text-start mx-2'>
