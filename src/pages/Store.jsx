@@ -8,6 +8,8 @@ import { Button } from 'react-bootstrap';
 export default function Store() {
 	document.title = 'My Store';
 	const [products, setProducts] = useState([]);
+	const [skeleton] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+	const [isReady, setIsReady] = useState(false);
 
 	useEffect(() => {
 		fetchProducts();
@@ -34,7 +36,8 @@ export default function Store() {
 			})
 			.catch((err) => {
 				console.log(err);
-			});
+			})
+			.finally(() => setIsReady(true));
 	};
 
 	return (
@@ -50,20 +53,35 @@ export default function Store() {
 					<section
 						id='listProduct'
 						className='row justify-content-center my-2'>
-						{products.map((product) => {
-							return (
-								<SmallCard
-									key={product.id}
-									id={product.id}
-									product={product.name}
-									price={product.price}
-									img={product.image}
-									stock={product.stock}
-									label='Remove'
-									click={deleteProduct}
-								/>
-							);
-						})}
+						{isReady
+							? skeleton.map((skeleton) => {
+									return (
+										<SmallCard
+											key={skeleton}
+											id={skeleton}
+											product='Product Name'
+											price='$0.00'
+											img='https://via.placeholder.com/150'
+											stock='0'
+											label='Remove'
+											click={deleteProduct}
+										/>
+									);
+							  })
+							: products.map((product) => {
+									return (
+										<SmallCard
+											key={product.id}
+											id={product.id}
+											product={product.name}
+											price={product.price}
+											img={product.image}
+											stock={product.stock}
+											label='Remove'
+											click={deleteProduct}
+										/>
+									);
+							  })}
 					</section>
 				</main>
 			</Layout>
