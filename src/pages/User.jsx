@@ -57,6 +57,10 @@ export default function User() {
 			.catch((err) => {
 				console.log(err);
 			});
+			document.getElementById('name').setAttribute('disabled', true);
+			document.getElementById('email').setAttribute('disabled', true);
+			document.getElementById('phone').setAttribute('disabled', true);
+			document.getElementById('address').setAttribute('disabled', true);
 	};
 
 	const logout = async () => {
