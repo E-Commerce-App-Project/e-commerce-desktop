@@ -40,7 +40,7 @@ function Transaction() {
 						</div>
 						<div className='col align-self-end'>
 							<h5 className='text-end col-auto mb-3 me-4'>
-								Total Harga : Rp.{countTotal().toLocaleString()}
+								Total : Rp. {countTotal().toLocaleString()}
 							</h5>
 						</div>
 						<div className='container'>
@@ -62,11 +62,14 @@ function Transaction() {
 												cancelButtonText: 'No, keep it',
 											}).then((result) => {
 												if (result.value) {
-													Swal.fire(
-														'Canceled!',
-														'Your order has been canceled.',
-														'success'
-													);
+													Swal.fire({
+														title: 'Canceled!',
+														text: 'Your order has been canceled.',
+														icon: 'success',
+														confirmButtonText: 'Ok',
+														confirmButtonColor:
+															'#3085d6',
+													});
 													let getLocal = JSON.parse(
 														localStorage.getItem(
 															'cart'
@@ -82,11 +85,15 @@ function Transaction() {
 													result.dismiss ===
 													Swal.DismissReason.cancel
 												) {
-													Swal.fire(
-														'Nice',
-														'Your order is safe :)',
-														'error'
-													);
+													Swal.fire({
+														title: 'Nice',
+														text: 'Your order is safe',
+														icon: 'success',
+														confirmButtonColor:
+															'#3085d6',
+														confirmButtonText:
+															'Cool',
+													});
 												}
 											});
 										}}>
@@ -114,11 +121,7 @@ function Transaction() {
 													navigate('/');
 												}
 											});
-										}}
-										// style={{
-										// 	borderRadius: '0.5rem',
-										// }}
-									>
+										}}>
 										OK
 									</Button>
 								</div>

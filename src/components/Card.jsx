@@ -4,15 +4,7 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const SmallCard = ({ img, product, price, stock, label, click, id }) => {
-	const reqLogin = () => {
-		if (localStorage.getItem('token') === null) {
-			Swal.fire({
-				icon: 'error',
-				title: 'Oops...',
-				text: 'Please Login First',
-			});
-		}
-	};
+
 	return (
 		<>
 			<div className='col-lg-2 col-auto mx-md-0 mx-lg-2 my-2'>
