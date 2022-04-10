@@ -68,9 +68,10 @@ const WideCard = ({ img, product, price, label, click }) => {
 			{/* Qty */}
 			<div className='col-2 m-auto'>
 				<input
-					type='number'
-					className='form-control w-50 mx-auto'
+					// type='number'
+					className='form-control-lg bg-light border-0 fw-bold text-center w-100'
 					value={qty}
+					disabled
 					onChange={(e) => setQty(e.target.value)}
 				/>
 			</div>
@@ -87,7 +88,7 @@ const WideCard = ({ img, product, price, label, click }) => {
 			{/* Price */}
 			<div className='col-2 m-auto'>
 				<h6 className='text-end fw-bold fs-5'>
-					Rp. {price.toLocaleString()}
+					Rp. {(qty * price).toLocaleString()}
 				</h6>
 			</div>
 		</>

@@ -25,7 +25,7 @@ function Transaction() {
 					<div
 						className='container bg-light my-5 py-lg-3 px-lg-5'
 						style={{ borderRadius: 1 + 'em' }}>
-						<h4 className='text-center text-uppercase'>
+						<h4 className='text-center text-uppercase mt-2 mb-4'>
 							Transaction Detail
 						</h4>
 						<div className='text-uppercase row text-center border-top py-2 border-bottom'>

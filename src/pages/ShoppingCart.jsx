@@ -25,9 +25,6 @@ function ShoppingCart() {
 		<div>
 			<Layout>
 				<main>
-					{/* <h2 className='text-center text-uppercase fw-bold text-white mt-3'>
-						My Cart
-					</h2> */}
 					<div
 						className='container bg-light my-5 py-lg-3 px-lg-5'
 						style={{ borderRadius: 1 + 'em' }}>
