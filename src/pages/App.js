@@ -10,10 +10,12 @@ function App() {
 	document.title = 'E-Commerce App';
 
 	const products = JSON.parse(localStorage.getItem('product'));
+	const [qty, setQty] = useState(1);
 
 	const addCart = (item) => {
 		let getLocal = JSON.parse(localStorage.getItem('cart'));
 		if (getLocal) {
+			item.qty = 1;
 			getLocal.push(item);
 			localStorage.setItem('cart', JSON.stringify(getLocal));
 		} else {
