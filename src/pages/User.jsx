@@ -92,11 +92,21 @@ export default function User() {
 						<div
 							className='container bg-light my-5 py-lg-3 px-lg-5'
 							style={{ borderRadius: 1 + 'em' }}>
-							<h2 className='text-center'>User Profile</h2>
 							<Link to='/store'>
-								<i className='fa-solid fa-shop float-end '></i>
+								<div className='justify-content-center pb-4'>
+									<h2 className='text-center'>
+										<i className='fa-solid fa-shop float-end '>
+											<h6 className=''>
+												Add <br /> Product
+											</h6>
+										</i>
+									</h2>
+								</div>
 							</Link>
-							<div className='justify-content-center my-3'>
+							<h2 className='text-start text-uppercase'>
+								User Profile
+							</h2>
+							<div className='justify-content-center my-5'>
 								<div className='d-flex flex-wrap justify-content-between mt-5'>
 									<h6 className='mt-3'>Name</h6>
 									<Button
