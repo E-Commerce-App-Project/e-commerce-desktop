@@ -45,13 +45,13 @@ function App() {
 									price={parseInt(
 										item.price
 									).toLocaleString()}
+									color={'warning'}
 									stock={item.stock}
 									label={'Add to Cart'}
 									click={() => addCart(item)}
 								/>
 							);
 						})}
-						{/* User Section */}
 						{userProducts.map((item, index) => {
 							return (
 								<SmallCard
@@ -63,6 +63,7 @@ function App() {
 									).toLocaleString()}
 									stock={item.stock}
 									label={'Add to Cart'}
+									color={'warning'}
 									click={() => addCart(item)}
 								/>
 							);
