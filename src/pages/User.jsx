@@ -42,6 +42,7 @@ export default function User() {
 		let getLocal = JSON.parse(localStorage.getItem('user'));
 		getLocal.splice(1, 1);
 		localStorage.setItem('user', JSON.stringify(getLocal));
+
 		Swal.fire({
 			icon: 'success',
 			title: 'Account Deleted',
@@ -192,22 +193,51 @@ export default function User() {
 								<Button
 									variant='danger'
 									className='mt-3 text-center justify-content-center mx-auto my-3 me-2 text-uppercase'
-									onClick={deleteAccount}>
-									<i class='fa-solid fa-trash-can me-2'></i>
+									onClick={() => {
+										Swal.fire({
+											title: 'Are you sure?',
+											text: "You won't be able to revert this!",
+											icon: 'warning',
+											showCancelButton: true,
+											confirmButtonColor: '#3085d6',
+											cancelButtonColor: '#d33',
+											confirmButtonText:
+												'Yes, delete it!',
+										}).then((result) => {
+											if (result.value) {
+												let getLocal = JSON.parse(
+													localStorage.getItem('user')
+												);
+												getLocal.splice(1, 1);
+												localStorage.setItem(
+													'user',
+													JSON.stringify(getLocal)
+												);
+												Swal.fire({
+													icon: 'success',
+													title: 'Account Deleted',
+													showConfirmButton: false,
+													timer: 1500,
+												});
+												navigate('/');
+											}
+										});
+									}}>
+									<i className='fa-solid fa-trash-can me-2'></i>
 									Delete
 								</Button>
 								<Button
 									variant='primary'
 									className='mt-3 text-center justify-content-center mx-auto my-3 mx-2 text-uppercase'
 									onClick={updateProfile}>
-									<i class='fa-solid fa-pen-to-square me-2'></i>
+									<i className='fa-solid fa-pen-to-square me-2'></i>
 									Update
 								</Button>
 								<Button
 									variant='success'
 									className='mt-3 text-center justify-content-center mx-auto my-3 ms-2 text-uppercase'
 									onClick={logout}>
-									<i class='fa-solid fa-arrow-right-from-bracket me-2'></i>
+									<i className='fa-solid fa-arrow-right-from-bracket me-2'></i>
 									Logout
 								</Button>
 							</div>
