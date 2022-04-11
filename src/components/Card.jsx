@@ -1,20 +1,31 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const SmallCard = ({ img, product, price, stock, label, click, id }) => {
-
+const SmallCard = ({
+	img,
+	product,
+	price,
+	stock,
+	label,
+	click,
+	edit,
+	color,
+}) => {
 	return (
 		<>
 			<div className='col-lg-2 col-auto mx-md-0 mx-lg-2 my-2'>
-				<Link to={`/detail/${id}`}>
-					<img
-						src={img}
-						alt='product'
-						className='w-100 rounded-top'
-					/>
-				</Link>
+				{/* <Link to={`/detail/${id}`}> */}
+				<img
+					src={img}
+					alt='product'
+					width={100}
+					height={160}
+					onClick={edit}
+					className='w-100 rounded-top'
+				/>
+				{/* </Link> */}
 				<div className='bg-light card-group rounded-bottom mb-1'>
 					<div className='text-start mx-2'>
 						<h6
@@ -25,6 +36,7 @@ const SmallCard = ({ img, product, price, stock, label, click, id }) => {
 								WebkitLineClamp: 2,
 								WebkitBoxOrient: 'vertical',
 								overflow: 'hidden',
+								height: '2.5em',
 							}}>
 							{product}
 						</h6>
@@ -36,7 +48,7 @@ const SmallCard = ({ img, product, price, stock, label, click, id }) => {
 				</div>
 				<div className='d-grid gap-2'>
 					<Button
-						variant='warning'
+						variant={color}
 						className=' text-uppercase fw-bold'
 						style={{ borderRadius: '0.5rem' }}
 						onClick={click}>
