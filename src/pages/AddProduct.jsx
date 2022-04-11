@@ -23,14 +23,14 @@ export default function AddProduct() {
 			description,
 			stock,
 		};
-		let getLocal = JSON.parse(localStorage.getItem('product'));
+		let getLocal = JSON.parse(localStorage.getItem('user-product'));
 		if (getLocal === null) {
 			let newLocal = [];
 			newLocal.push(productItem);
-			localStorage.setItem('product', JSON.stringify(newLocal));
+			localStorage.setItem('user-product', JSON.stringify(newLocal));
 		} else {
 			getLocal.push(productItem);
-			localStorage.setItem('product', JSON.stringify(getLocal));
+			localStorage.setItem('user-product', JSON.stringify(getLocal));
 		}
 		setProduct('');
 		setPrice('');
@@ -140,6 +140,9 @@ export default function AddProduct() {
 								<Button
 									variant='warning'
 									className=' text-uppercase fw-bold mx-2'
+									onClick={() => {
+										navigate('/store');
+									}}
 									style={{ borderRadius: '0.5rem' }}>
 									Cancel
 								</Button>
